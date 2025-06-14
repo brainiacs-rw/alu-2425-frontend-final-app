@@ -5,13 +5,17 @@ const { nanoid } = require('nanoid'); // For generating unique IDs
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const jwt = require('jsonwebtoken');
-
+const cors = require('cors')
 // Initialize Express app
 const app = express();
 const port = 3000;
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
+app.use(express.urlencoded());
+app.use(cors({
+    origin: "*",
+}))
 
 // Swagger configuration
 const swaggerOptions = {
